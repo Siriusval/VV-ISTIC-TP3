@@ -1,17 +1,48 @@
 package fr.istic.vv;
 
+import java.time.LocalDate;
+import java.util.Objects;
+
 class Date implements Comparable<Date> {
 
-    public Date(int day, int month, int year) { }
+    public LocalDate date;
 
-    public static boolean isValidDate(int day, int month, int year) { return false; }
+    public Date(int day, int month, int year) {
+        this.date = LocalDate.of(year,month,day);
+    }
 
-    public static boolean isLeapYear(int year) { return false; }
+    public static boolean isValidDate(int day, int month, int year) {
+        try{
+            LocalDate date = LocalDate.of(year,month,day);
+            return true;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 
-    public Date nextDate() { return null; }
+    public static boolean isLeapYear(int year) {
+        LocalDate date = LocalDate.of(year,1,1);
+        return date.isLeapYear();
+    }
 
-    public Date previousDate() { return null; }
+    public Date nextDate() {
+        LocalDate nextDate = date.plusDays(1);
+        return new Date(nextDate.getYear(),nextDate.getMonthValue(), nextDate.getDayOfMonth());
+    }
 
-    public int compareTo(Date other) { return 0; }
+    public Date previousDate() {
+        LocalDate nextDate = date.minusDays(1);
+        return new Date(nextDate.getYear(),nextDate.getMonthValue(), nextDate.getDayOfMonth());
+    }
+
+    public int compareTo(Date other) {
+        if(Objects.isNull(other)){
+            throw new NullPointerException();
+        }
+
+        return this.date.compareTo(other.date);
+    }
 
 }

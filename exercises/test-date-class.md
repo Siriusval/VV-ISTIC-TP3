@@ -53,3 +53,39 @@ Use the project in [tp3-date](../code/tp3-date) to complete this exercise.
 
 ## Answer
 
+1 -
+
+isValidDate :
+
+| Characteristics | b1 | b2 | b3 | b4 | b5 |
+|--|--|--|--|--|--|
+|Year value| <0 |  0 | year%4=0(validLeapYear)| else(validCommonYear)|
+|Month value| Month <= 0 | 1,3,5,7,8,10,12 (31 days Month) | 4,6,9,11 (30 days month) | 2 | >12|
+|Day value| <=0 | >= 1 && <= max(month,year) | > max(month,year)
+
+isLeapYear:
+
+| Characteristics | b1 | b2 | b3 | b4 |
+|--|--|--|--|--|
+|Year value| <0 |  0 | year%4=0(validLeapYear)| else(validCommonYear)|
+
+nextDate :
+| Characteristics | b1 | b2 | b3 | b4 |
+|--|--|--|--|--|
+|Day value| <=0 | >= 1  && < max(month,year) | =max(month,year) |> max(month,year)|
+|Month value| Month <= 0 | <12 | 12 | >12|
+|Year value| <0 |  0 | year%4=0(validLeapYear)| else(validCommonYear)|
+
+previousDate :
+| Characteristics | b1 | b2 | b3 | b4 |
+|--|--|--|--|--|
+|Day value| <=0 | 1 | 1 && <= max(month,year) |> max(month,year)|
+|Month value| Month <= 0 | 1 | > 1 && <= 12| > 12
+|Year value| <0 |  0 | year%4=0(validLeapYear)| else(validCommonYear)|
+
+compareTo :
+
+
+
+
+
