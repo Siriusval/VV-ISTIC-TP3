@@ -3,7 +3,7 @@ package fr.istic.vv;
 import java.time.LocalDate;
 import java.util.Objects;
 
-class Date implements Comparable<Date> {
+public class Date implements Comparable<Date> {
 
     public LocalDate date;
 
@@ -17,7 +17,6 @@ class Date implements Comparable<Date> {
             return true;
         }
         catch(Exception e){
-            e.printStackTrace();
             return false;
         }
     }
@@ -29,14 +28,16 @@ class Date implements Comparable<Date> {
 
     public Date nextDate() {
         LocalDate nextDate = date.plusDays(1);
-        return new Date(nextDate.getYear(),nextDate.getMonthValue(), nextDate.getDayOfMonth());
+        return new Date(nextDate.getDayOfMonth(),nextDate.getMonthValue(), nextDate.getYear());
     }
 
     public Date previousDate() {
         LocalDate nextDate = date.minusDays(1);
-        return new Date(nextDate.getYear(),nextDate.getMonthValue(), nextDate.getDayOfMonth());
+        return new Date(nextDate.getDayOfMonth(),nextDate.getMonthValue(), nextDate.getYear());
     }
 
+
+    @Override
     public int compareTo(Date other) {
         if(Objects.isNull(other)){
             throw new NullPointerException();
